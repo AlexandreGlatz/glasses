@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupItem : MonoBehaviour
+public class InteractionWithEnvironment : MonoBehaviour
 {
 
     [SerializeField] private Camera playerCamera;
     [SerializeField] private Transform objectGrabPointTransform;
-    [SerializeField] private float pickUpDistance = 2.0f;
+    [SerializeField] private float pickUpDistance = 3.0f;
     [SerializeField] private LayerMask pickUpLayerMask;
 
     private Transform highlight;
@@ -16,7 +16,7 @@ public class PickupItem : MonoBehaviour
     private ObjectGrabbable objectGrabbed = null;
     void Update()
     {
-        // Highlight
+        // Highlight outline
         if (highlight != null)
         {
             highlight.gameObject.GetComponent<Outline>().enabled = false;
@@ -39,6 +39,7 @@ public class PickupItem : MonoBehaviour
             }
         }
 
+        // Pickup/Drop Items
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (objectGrabbed == null)
@@ -57,6 +58,19 @@ public class PickupItem : MonoBehaviour
                 // Carrying an object, drop it
                 objectGrabbed.Drop();
                 objectGrabbed = null;
+            }
+        }
+
+        // Keypad Key Interaction 
+
+        if (rayHit)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (hitInfo.transform.GetComponent<KeypadKey>() != null)
+                {
+                    hitInfo.transform.GetComponent<KeypadKey>().SendKey();
+                }
             }
         }
     }
