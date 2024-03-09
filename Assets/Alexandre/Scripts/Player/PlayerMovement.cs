@@ -9,8 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
 
     public float groundDrag;
-
     public Transform orientation;
+
+    [Header("Pathways")]
+    public PathWays ways;
 
     float horizontalInput;
     float verticalInput;
@@ -18,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +66,16 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "WrongPath")
+        {
+            print("non");
+            rb.transform.position = new Vector3(-3, -2, 127);
+            ways.GenerateRightPathway();
         }
     }
 }

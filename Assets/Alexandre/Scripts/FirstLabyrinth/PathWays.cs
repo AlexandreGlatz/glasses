@@ -13,26 +13,8 @@ public class PathWays : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateRightPathway();
         nextPassage = FirstPassage;
-        for (int i = 0; i < pathWaysAmount; i++)
-        {
-            int j = 0;
-            foreach (GameObject pass in nextPassage.singlePath)
-            {
-                pass.transform.position -= new Vector3(0, 0, (i + 1) * 10);
-                pass.tag = "WrongPath";
-                if (j == rightPath[i])
-                {
-                    pass.tag = "RightPath";
-                }
-                j++;
-            }
-
-            passageWay.Add(nextPassage);
-            Instantiate(passageWay[i]);
-            print("i : "+i);
-        }
+        GenerateRightPathway();
     }
 
     // Update is called once per frame
@@ -40,13 +22,39 @@ public class PathWays : MonoBehaviour
     {
         
     }
-    void GenerateRightPathway()
+    public void GenerateRightPathway()
     {
+        foreach (Passage passage in passageWay) 
+        { 
+            Destroy(passage.gameObject);
+        }
+
+        passageWay.Clear();
+
         for (int i = 0; i < 4; i++)
         {
             rightPath.Add(Random.Range(0, 4));
             print(rightPath[i]);
         }
+        
+        for (int i = 0; i < pathWaysAmount; i++)
+        {
+            int j = 0;
+            foreach (GameObject pass in nextPassage.singlePath)
+            {
+                pass.transform.position -= new Vector3(0, 0, 20);
+                pass.tag = "WrongPath";
+                if (j == rightPath[i])
+                {
+                    pass.tag = "RightPath";
+                }
+                j++;
+            }
+            print("i : " + i);
+            passageWay.Add(Instantiate(nextPassage));
+            
+        }
+        FirstPassage.transform.position += new Vector3(0, 0, pathWaysAmount * 20);
     }
 
 }
