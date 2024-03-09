@@ -17,8 +17,17 @@ public class PathWays : MonoBehaviour
         nextPassage = FirstPassage;
         for (int i = 0; i < pathWaysAmount; i++)
         {
-            foreach (GameObject pass in nextPassage.singlePath) {
-                pass.transform.position -= new Vector3(0, 0, (i+1)*10);            }
+            int j = 0;
+            foreach (GameObject pass in nextPassage.singlePath)
+            {
+                pass.transform.position -= new Vector3(0, 0, (i + 1) * 10);
+                pass.tag = "WrongPath";
+                if (j == rightPath[i])
+                {
+                    pass.tag = "RightPath";
+                }
+                j++;
+            }
 
             passageWay.Add(nextPassage);
             Instantiate(passageWay[i]);
