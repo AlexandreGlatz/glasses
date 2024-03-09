@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PathWays : MonoBehaviour
@@ -12,7 +13,13 @@ public class PathWays : MonoBehaviour
     private List<int> rightPath = new List<int>();
 
     public List<Passage> passageWay = new List<Passage>();
-    
+
+    [Header("Plant Pots")]
+    public MeshFilter plant;
+    public TMP_Text plantText;
+    public List<Vector3> potCoord = new List<Vector3>();
+    public List<Mesh> PotMeshes = new List<Mesh>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,10 +49,16 @@ public class PathWays : MonoBehaviour
             rightPath.Add(Random.Range(1, 5));
             print(rightPath[i]);
         }
+        //put flower pots
         
+
         for (int i = 0; i < pathWaysAmount; i++)
         {
             Shuffle(nextPassage.leavesAmount);
+            plant.mesh = PotMeshes[rightPath[i]-1];
+            plantText.text = (i+1).ToString();
+            Instantiate(plant.gameObject.transform, potCoord[i], Quaternion.identity);
+            
             int j = 0;
             foreach (GameObject pass in nextPassage.singlePath)
             {

@@ -8,9 +8,7 @@ public class Passage : MonoBehaviour
     public List<GameObject> singlePath = new List<GameObject>();
     public List<int> leavesAmount = new List<int>();
     public List<GameObject> trees = new List<GameObject>();
-    public GameObject plant;
-    public TMP_Text plantText;
-    public List<Vector3> potCoord = new List<Vector3>();
+    
     // Start is called before the first frame update
     void Start()
     {
