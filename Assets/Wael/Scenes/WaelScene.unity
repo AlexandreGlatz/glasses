@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 750320691}
   - component: {fileID: 750320690}
   m_Layer: 0
-  m_Name: SoundKeypad
+  m_Name: AudioSourceKeypad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
