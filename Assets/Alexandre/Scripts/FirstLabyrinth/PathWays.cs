@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PathWays : MonoBehaviour
@@ -11,6 +12,7 @@ public class PathWays : MonoBehaviour
     public int pathWaysAmount;
 
     private List<int> rightPath = new List<int>();
+    private List<Transform> pots = new List<Transform>(); 
 
     public List<Passage> passageWay = new List<Passage>();
 
@@ -20,11 +22,17 @@ public class PathWays : MonoBehaviour
     public List<Vector3> potCoord = new List<Vector3>();
     public List<Mesh> PotMeshes = new List<Mesh>();
 
+    [Header("Parents")]
+    public GameObject parentNormalScene;
+    public GameObject parentPath;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         nextPassage = FirstPassage;
         GenerateRightPathway();
+        FirstPassage.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,15 +42,8 @@ public class PathWays : MonoBehaviour
     }
     public void GenerateRightPathway()
     {
-        rightPath.Clear();
-        
-        
-        foreach (Passage passage in passageWay) 
-        { 
-            Destroy(passage.gameObject);
-        }
-
-        passageWay.Clear();
+        FirstPassage.gameObject.SetActive(true);
+        ClearLists();
 
         for (int i = 0; i < 4; i++)
         {
@@ -57,13 +58,14 @@ public class PathWays : MonoBehaviour
             Shuffle(nextPassage.leavesAmount);
             plant.mesh = PotMeshes[rightPath[i]-1];
             plantText.text = (i+1).ToString();
-            Instantiate(plant.gameObject.transform, potCoord[i], Quaternion.identity);
+            pots.Add(Instantiate(plant.gameObject.transform, potCoord[i], Quaternion.identity, parent: parentNormalScene.transform));
             
             int j = 0;
             foreach (GameObject pass in nextPassage.singlePath)
             {
                 //set trigger boxes
-                pass.transform.position -= new Vector3(0, 0, 20);
+                pass.transform.position -= new Vector3(0, 0, 30);
+                
                 pass.tag = "WrongPath";
 
                 //put trees next to triggers
@@ -77,10 +79,11 @@ public class PathWays : MonoBehaviour
                 }
                 j++;
             }
-            passageWay.Add(Instantiate(nextPassage));
+            passageWay.Add(Instantiate(nextPassage, parentPath.transform));
+
             
         }
-        FirstPassage.transform.position += new Vector3(0, 0, pathWaysAmount * 20);
+        FirstPassage.transform.position += new Vector3(0, 0, pathWaysAmount * 30);
     }
     // ShuffleList(toShuffle);
 
@@ -93,6 +96,23 @@ public class PathWays : MonoBehaviour
             inputList[i] = inputList[rand];
             inputList[rand] = temp;
         }
+    }
+
+    void ClearLists()
+    {
+        rightPath.Clear();
+
+        foreach (Passage passage in passageWay)
+        {
+            Destroy(passage.gameObject);
+        }
+
+        foreach (Transform pot in pots)
+        {
+            Destroy(pot.gameObject);
+        }
+        passageWay.Clear();
+        pots.Clear();
     }
 
 

@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.tag == "WrongPath")
         {
             print("non");
-            rb.transform.position = new Vector3(-3, -2, 127);
+            rb.transform.position = new Vector3(-3, -2, 115);
             ways.GenerateRightPathway();
         }
     }
