@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - WrongPath
+  - RightPath
+  - Tree
   - Grabbable
   layers:
   - Default
@@ -16,7 +19,7 @@ TagManager:
   - PickUp
   - Keypad
   - 
-  - 
+  - WhatIsGround
   - 
   - 
   - 
