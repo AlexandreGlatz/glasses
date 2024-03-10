@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class KeypadController : MonoBehaviour
 {
+    public DoorController doorLinkedToPad;
     [SerializeField] private string password;
     public string passwordTestedOnKeypad = "";
     public TMP_Text displayedPassword;
@@ -17,7 +18,6 @@ public class KeypadController : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip correctSound;
-    public AudioClip errorSound;
     public AudioClip hitKeySound;
     private void Start()
     {
@@ -45,12 +45,14 @@ public class KeypadController : MonoBehaviour
                     greenLight.SetActive(true);
                     if (audioSource != null)
                         audioSource.PlayOneShot(correctSound);
+
+                    doorLinkedToPad.lockedByPassword = false;
+                    doorLinkedToPad.OpenClose();
+
                     StartCoroutine(waitAndClear());
                 }
                 else
                 {
-                    if (audioSource != null)
-                        audioSource.PlayOneShot(errorSound);
                     StartCoroutine(waitAndClear());
                 }
             }

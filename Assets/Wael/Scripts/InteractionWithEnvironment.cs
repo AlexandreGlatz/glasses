@@ -42,7 +42,7 @@ public class InteractionWithEnvironment : MonoBehaviour
         // Pickup/Drop Items
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (objectGrabbed == null)
+            if (objectGrabbed == null || objectGrabbed.isOnSocle)
             {
                 // Not carrying an object, try to grab
                 if (rayHit)

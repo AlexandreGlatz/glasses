@@ -6,9 +6,19 @@ public class ObjectGrabbable : MonoBehaviour
 {
     private Rigidbody objectRigidBody;
     private Transform objectGrabPointTransform;
+
+    [SerializeField] private Transform basMesh;
+    private Vector3 tailleMesh;
+
+    public bool isOnSocle {  get; private set; } 
     private void Awake()
     {
         objectRigidBody = GetComponent<Rigidbody>();
+        if (basMesh != null)
+        {
+            tailleMesh = transform.position - basMesh.position;
+        }
+        isOnSocle = false;
     }
     public void Grab(Transform objectGrabPointTransform)
     {
@@ -17,6 +27,7 @@ public class ObjectGrabbable : MonoBehaviour
 
         objectRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
         objectRigidBody.drag = 5f;
+        isOnSocle = false;
     }
 
     public void Drop()
@@ -38,5 +49,15 @@ public class ObjectGrabbable : MonoBehaviour
             Quaternion rot = Quaternion.Lerp(transform.rotation, objectGrabPointTransform.rotation, Time.deltaTime * lerpSpeed);
             objectRigidBody.MoveRotation(rot);
         }
+    }
+
+    public void PlaceObjectOnSocle(Transform placeholderSocle)
+    {
+        Drop();
+        objectRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        objectRigidBody.useGravity = false;
+        isOnSocle = true;
+        transform.position = placeholderSocle.position + tailleMesh ;
+        transform.rotation = placeholderSocle.rotation;
     }
 }
