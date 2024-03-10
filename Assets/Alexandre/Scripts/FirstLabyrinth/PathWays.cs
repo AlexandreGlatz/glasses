@@ -31,6 +31,10 @@ public class PathWays : MonoBehaviour
     [Header("Switch World")]
     public SwitchWorld switchWorld;
 
+    [Header("Footprints")]
+    public GameObject footPrints;
+    bool changeFpTag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +50,10 @@ public class PathWays : MonoBehaviour
     public void GenerateRightPathway()
     {
         ///Generate passway with right track 
+
+        switchWorld.resetActives();
+
+        //destroy gameobjects from precedent try
         ClearLists();
 
         //Generate right path
@@ -79,6 +87,19 @@ public class PathWays : MonoBehaviour
                 nextPassage.trees[nextPassage.leavesAmount[j]-1].transform.position = pass.transform.position - new Vector3(4,0,0);
                 nextPassage.trees[nextPassage.leavesAmount[j]-1].transform.position += new Vector3(0,2,0);
 
+                //set footprints for four last rows
+                if(i>=4)
+                {
+                    footPrints.transform.position = pass.transform.position;
+                    footPrints.transform.position += new Vector3(0, 2, 0);
+                    footPrints.tag = "Footprints";
+                    if(changeFpTag)
+                    {
+                        footPrints.tag = "RealFootprints";
+                    }
+                    
+                }
+
                 //set right way
                 if (nextPassage.leavesAmount[j] == rightPath[i])
                 {
@@ -86,6 +107,7 @@ public class PathWays : MonoBehaviour
                 }
                 j++;
             }
+            changeFpTag = !changeFpTag;
             passageWay.Add(Instantiate(nextPassage, parentPath.transform));
 
             
