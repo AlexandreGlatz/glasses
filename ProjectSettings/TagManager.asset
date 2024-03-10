@@ -8,6 +8,10 @@ TagManager:
   - RightPath
   - Tree
   - Grabbable
+  - Footprints
+  - RealFootprints
+  - HelpCube
+  - GoLvl3
   layers:
   - Default
   - TransparentFX

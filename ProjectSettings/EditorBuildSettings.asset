@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MainScene/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Alexandre/Scenes/AlexScene.unity
+    guid: b92b72052fa63664da7672d4beb4fc4a
   m_configObjects: {}
