@@ -8,6 +8,8 @@ TagManager:
   - RightPath
   - Tree
   - Grabbable
+  - Mug
+  - GoToLevel2
   - Footprints
   - RealFootprints
   - HelpCube
