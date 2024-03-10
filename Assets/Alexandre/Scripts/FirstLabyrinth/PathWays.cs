@@ -19,7 +19,6 @@ public class PathWays : MonoBehaviour
 
     [Header("Plant Pots")]
     public MeshFilter plant;
-    public TMP_Text plantText;
     public List<Vector3> potCoord = new List<Vector3>();
     public List<Mesh> PotMeshes = new List<Mesh>();
 
@@ -31,6 +30,11 @@ public class PathWays : MonoBehaviour
     [Header("Switch World")]
     public SwitchWorld switchWorld;
 
+    [Header("Footprints")]
+    public GameObject footPrints;
+    bool changeFpTag = false;
+
+    bool firstGen = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +50,14 @@ public class PathWays : MonoBehaviour
     public void GenerateRightPathway()
     {
         ///Generate passway with right track 
+        if (!firstGen)
+        {
+            plant.transform.position += new Vector3(0, 100, 0);
+            FirstPassage.transform.position += new Vector3(0, 100, 0);
+        }
+        switchWorld.resetActives();
+
+        //destroy gameobjects from precedent try
         ClearLists();
 
         //Generate right path
@@ -63,7 +75,6 @@ public class PathWays : MonoBehaviour
             if (i < 4)
             {
                 plant.mesh = PotMeshes[rightPath[i] - 1];
-                plantText.text = (i + 1).ToString();
                 pots.Add(Instantiate(plant.gameObject.transform, potCoord[i], Quaternion.identity, parent: parentNormalScene.transform));
             }
 
@@ -79,6 +90,19 @@ public class PathWays : MonoBehaviour
                 nextPassage.trees[nextPassage.leavesAmount[j]-1].transform.position = pass.transform.position - new Vector3(4,0,0);
                 nextPassage.trees[nextPassage.leavesAmount[j]-1].transform.position += new Vector3(0,2,0);
 
+                //set footprints for four last rows
+                if(i>=4 && nextPassage.leavesAmount[j] == rightPath[i])
+                {
+                    footPrints.transform.position = pass.transform.position;
+                    footPrints.transform.position += new Vector3(0, 1.07f, 0);
+                    footPrints.tag = "Footprints";
+                    if(changeFpTag)
+                    {
+                        footPrints.tag = "RealFootprints";
+                    }
+                    
+                }
+
                 //set right way
                 if (nextPassage.leavesAmount[j] == rightPath[i])
                 {
@@ -86,11 +110,14 @@ public class PathWays : MonoBehaviour
                 }
                 j++;
             }
+            changeFpTag = !changeFpTag;
             passageWay.Add(Instantiate(nextPassage, parentPath.transform));
 
             
         }
-        FirstPassage.transform.position += new Vector3(0, 0, pathWaysAmount * 30);
+        plant.gameObject.transform.position -= new Vector3(0, 100, 0);
+        FirstPassage.transform.position += new Vector3(0, -100, pathWaysAmount * 30);
+        firstGen = false;
     }
     // ShuffleList(toShuffle);
 
