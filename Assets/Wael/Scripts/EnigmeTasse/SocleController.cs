@@ -49,5 +49,6 @@ public class SocleController : MonoBehaviour
     private void DisplayClue()
     {
         Debug.Log("le clue est trouvé");
+        objectToDisplay.SetActive(true);
     }
 }

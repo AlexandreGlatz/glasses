@@ -10,7 +10,7 @@ public class KeypadController : MonoBehaviour
 {
     public DoorController doorLinkedToPad;
     [SerializeField] private string password;
-    public string passwordTestedOnKeypad = "";
+    private string passwordTestedOnKeypad = "";
     public TMP_Text displayedPassword;
 
     [SerializeField] private GameObject greenLight;

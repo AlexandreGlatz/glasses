@@ -9,6 +9,7 @@ TagManager:
   - Tree
   - Grabbable
   - Mug
+  - GoToLevel2
   layers:
   - Default
   - TransparentFX

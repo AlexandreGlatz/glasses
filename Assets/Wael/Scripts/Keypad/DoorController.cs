@@ -20,22 +20,9 @@ public class DoorController : MonoBehaviour
         }
 
         // Open/Close Door
-        anim.SetTrigger("Door");
         isOpen = !isOpen;
 
     }
-
-    private void Update()
-    {
-        if (canOpen)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                OpenClose();
-            }
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

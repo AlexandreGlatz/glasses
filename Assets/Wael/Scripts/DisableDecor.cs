@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class DisableDecor : MonoBehaviour
 {
-    [SerializeField] private GameObject wall;
+    [SerializeField] private GameObject[] Scenes;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            if (wall.activeSelf)
+            foreach (GameObject scene in Scenes)
             {
-                wall.SetActive(false);
-            }
-            else
-            {
-                wall.SetActive(true);
+                if (scene.activeSelf)
+                {
+                    scene.SetActive(false);
+                }
+                else
+                {
+                    scene.SetActive(true);
+                }
             }
         }
     }
