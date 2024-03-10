@@ -6,6 +6,7 @@ public class SwitchWorld : MonoBehaviour
 {
     public GameObject normalScene;
     public GameObject glassesScene;
+    public List<GameObject> trees;
 
     private bool normalBool = true;
     private bool glassesBool = false;
@@ -18,11 +19,18 @@ public class SwitchWorld : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V))
         {
+            
             normalBool = !normalBool;
             glassesBool = !glassesBool;
             normalScene.SetActive(normalBool);
+
+            foreach (GameObject tree in trees)
+            {
+                tree.SetActive(normalBool);
+            }
+
             glassesScene.SetActive(glassesBool);
         }
     }

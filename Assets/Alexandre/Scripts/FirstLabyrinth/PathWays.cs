@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PathWays : MonoBehaviour
 {
+    [Header("Paths")]
     public Passage FirstPassage;
     private Passage nextPassage;
 
@@ -25,14 +26,16 @@ public class PathWays : MonoBehaviour
     [Header("Parents")]
     public GameObject parentNormalScene;
     public GameObject parentPath;
+    public GameObject parentTree;
+
+    [Header("Switch World")]
+    public SwitchWorld switchWorld;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         nextPassage = FirstPassage;
         GenerateRightPathway();
-        FirstPassage.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,24 +45,28 @@ public class PathWays : MonoBehaviour
     }
     public void GenerateRightPathway()
     {
-        FirstPassage.gameObject.SetActive(true);
+        ///Generate passway with right track 
         ClearLists();
 
-        for (int i = 0; i < 4; i++)
+        //Generate right path
+        for (int i = 0; i < pathWaysAmount; i++)
         {
             rightPath.Add(Random.Range(1, 5));
             print(rightPath[i]);
         }
-        //put flower pots
         
-
         for (int i = 0; i < pathWaysAmount; i++)
         {
             Shuffle(nextPassage.leavesAmount);
-            plant.mesh = PotMeshes[rightPath[i]-1];
-            plantText.text = (i+1).ToString();
-            pots.Add(Instantiate(plant.gameObject.transform, potCoord[i], Quaternion.identity, parent: parentNormalScene.transform));
-            
+
+            //set flower pots for four first rows
+            if (i < 4)
+            {
+                plant.mesh = PotMeshes[rightPath[i] - 1];
+                plantText.text = (i + 1).ToString();
+                pots.Add(Instantiate(plant.gameObject.transform, potCoord[i], Quaternion.identity, parent: parentNormalScene.transform));
+            }
+
             int j = 0;
             foreach (GameObject pass in nextPassage.singlePath)
             {
@@ -89,6 +96,7 @@ public class PathWays : MonoBehaviour
 
     void Shuffle<T>(List<T> inputList)
     {
+        ///Shuffles a list
         for (int i = 0; i < inputList.Count - 1; i++)
         {
             T temp = inputList[i];
@@ -100,6 +108,7 @@ public class PathWays : MonoBehaviour
 
     void ClearLists()
     {
+        ///clear all lists to reset lvl
         rightPath.Clear();
 
         foreach (Passage passage in passageWay)

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WrongPath
   - RightPath
+  - Tree
   layers:
   - Default
   - TransparentFX

@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 41576249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.4, z: 140}
+  m_LocalPosition: {x: 0, y: 4.05, z: 166.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -157,10 +157,7 @@ Transform:
   - {fileID: 110522846}
   - {fileID: 487047632}
   - {fileID: 1700798536}
-  - {fileID: 1612815346}
-  - {fileID: 1732671441}
-  - {fileID: 1391852833}
-  - {fileID: 388508308}
+  - {fileID: 968949691}
   m_Father: {fileID: 572723917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &41576251
@@ -354,7 +351,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 41576250}
+  m_Father: {fileID: 968949691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &388508309
 BoxCollider:
@@ -947,7 +944,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 41576250}
-  m_Father: {fileID: 1848444773}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &572723918
 MonoBehaviour:
@@ -962,7 +959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstPassage: {fileID: 41576251}
-  pathWaysAmount: 4
+  pathWaysAmount: 8
   passageWay: []
   plant: {fileID: 683887094}
   plantText: {fileID: 487800431}
@@ -978,6 +975,8 @@ MonoBehaviour:
   - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   parentNormalScene: {fileID: 1848444772}
   parentPath: {fileID: 572723916}
+  parentTree: {fileID: 0}
+  switchWorld: {fileID: 1876197241}
 --- !u!1 &683887090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1110,7 @@ Transform:
   m_GameObject: {fileID: 833178507}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -2, z: 130.5}
+  m_LocalPosition: {x: -3, y: -2, z: 115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1163,6 +1162,41 @@ MonoBehaviour:
   groundDrag: 5
   orientation: {fileID: 133514096}
   ways: {fileID: 572723918}
+--- !u!1 &968949690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 968949691}
+  m_Layer: 0
+  m_Name: Trees
+  m_TagString: Tree
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &968949691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968949690}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1612815346}
+  - {fileID: 1732671441}
+  - {fileID: 1391852833}
+  - {fileID: 388508308}
+  m_Father: {fileID: 41576250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979840490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1429,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 41576250}
+  m_Father: {fileID: 968949691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1391852834
 BoxCollider:
@@ -1483,7 +1517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1405954226
 Transform:
   m_ObjectHideFlags: 0
@@ -1532,7 +1566,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 41576250}
+  m_Father: {fileID: 968949691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1612815347
 BoxCollider:
@@ -1630,7 +1664,7 @@ Transform:
   m_GameObject: {fileID: 1631360305}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.08, y: -17.27, z: 84.78}
+  m_LocalPosition: {x: -6.08, y: -14.75, z: 84.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1927,7 +1961,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 41576250}
+  m_Father: {fileID: 968949691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1732671442
 BoxCollider:
@@ -2031,7 +2065,6 @@ Transform:
   m_Children:
   - {fileID: 415143160}
   - {fileID: 408455047}
-  - {fileID: 572723917}
   - {fileID: 1631360306}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2066,6 +2099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalScene: {fileID: 1848444772}
   glassesScene: {fileID: 1405954225}
+  trees: []
 --- !u!4 &1876197242
 Transform:
   m_ObjectHideFlags: 0
@@ -2368,6 +2402,7 @@ SceneRoots:
   - {fileID: 1220034603}
   - {fileID: 1405954226}
   - {fileID: 1848444773}
+  - {fileID: 572723917}
   - {fileID: 833178508}
   - {fileID: 1980180651}
   - {fileID: 1705023459}
