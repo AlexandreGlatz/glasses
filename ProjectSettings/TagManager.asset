@@ -10,6 +10,7 @@ TagManager:
   - Grabbable
   - Footprints
   - RealFootprints
+  - HelpCube
   layers:
   - Default
   - TransparentFX

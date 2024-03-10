@@ -10,9 +10,11 @@ public class SwitchWorld : MonoBehaviour
     public GameObject[] footPrints;
     public GameObject[] realFp;
 
+    public PlayerMovement player;
     private bool normalBool = true;
     private bool glassesBool = false;
     public bool isFirst = true;
+    public bool canUse = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +24,9 @@ public class SwitchWorld : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V) && canUse)
         {
+            player.useText.SetActive(false);
             if (isFirst)
             {
                 trees = GameObject.FindGameObjectsWithTag("Tree");

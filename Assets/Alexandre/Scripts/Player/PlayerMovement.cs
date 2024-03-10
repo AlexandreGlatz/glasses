@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Security;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,7 +23,16 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+    public SwitchWorld switchWorld;
+    bool yes = false;
 
+    [Header("Tuto Texts")]
+    public GameObject helpText;
+    public GameObject useText;
+
+    [Header("Glasses")]
+    public GameObject glasses;
+    public GameObject glassesTrigger;
 
 
     // Start is called before the first frame update
@@ -36,7 +48,10 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
 
         rb.drag = groundDrag;
-
+        if (yes)
+        {
+            GetGlasses();
+        }
     }
 
     private void FixedUpdate()
@@ -76,6 +91,27 @@ public class PlayerMovement : MonoBehaviour
             print("non");
             rb.transform.position = new Vector3(-3, -2, 115);
             ways.GenerateRightPathway();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "HelpCube")
+        {
+            helpText.SetActive(true);
+            yes = true;
+        }
+    }
+
+    void GetGlasses()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            helpText.SetActive(false);
+            useText.SetActive(true);
+            Destroy(glasses);
+            Destroy(glassesTrigger);
+            switchWorld.canUse = true;
         }
     }
 }

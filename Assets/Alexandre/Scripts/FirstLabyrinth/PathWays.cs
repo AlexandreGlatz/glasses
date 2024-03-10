@@ -19,7 +19,6 @@ public class PathWays : MonoBehaviour
 
     [Header("Plant Pots")]
     public MeshFilter plant;
-    public TMP_Text plantText;
     public List<Vector3> potCoord = new List<Vector3>();
     public List<Mesh> PotMeshes = new List<Mesh>();
 
@@ -35,6 +34,7 @@ public class PathWays : MonoBehaviour
     public GameObject footPrints;
     bool changeFpTag = false;
 
+    bool firstGen = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +50,11 @@ public class PathWays : MonoBehaviour
     public void GenerateRightPathway()
     {
         ///Generate passway with right track 
-
+        if (!firstGen)
+        {
+            plant.transform.position += new Vector3(0, 100, 0);
+            FirstPassage.transform.position += new Vector3(0, 100, 0);
+        }
         switchWorld.resetActives();
 
         //destroy gameobjects from precedent try
@@ -71,7 +75,6 @@ public class PathWays : MonoBehaviour
             if (i < 4)
             {
                 plant.mesh = PotMeshes[rightPath[i] - 1];
-                plantText.text = (i + 1).ToString();
                 pots.Add(Instantiate(plant.gameObject.transform, potCoord[i], Quaternion.identity, parent: parentNormalScene.transform));
             }
 
@@ -112,7 +115,9 @@ public class PathWays : MonoBehaviour
 
             
         }
-        FirstPassage.transform.position += new Vector3(0, 0, pathWaysAmount * 30);
+        plant.gameObject.transform.position -= new Vector3(0, 100, 0);
+        FirstPassage.transform.position += new Vector3(0, -100, pathWaysAmount * 30);
+        firstGen = false;
     }
     // ShuffleList(toShuffle);
 
