@@ -8,6 +8,8 @@ TagManager:
   - RightPath
   - Tree
   - Grabbable
+  - Footprints
+  - RealFootprints
   layers:
   - Default
   - TransparentFX

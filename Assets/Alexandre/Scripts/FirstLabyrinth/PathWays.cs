@@ -88,10 +88,10 @@ public class PathWays : MonoBehaviour
                 nextPassage.trees[nextPassage.leavesAmount[j]-1].transform.position += new Vector3(0,2,0);
 
                 //set footprints for four last rows
-                if(i>=4)
+                if(i>=4 && nextPassage.leavesAmount[j] == rightPath[i])
                 {
                     footPrints.transform.position = pass.transform.position;
-                    footPrints.transform.position += new Vector3(0, 2, 0);
+                    footPrints.transform.position += new Vector3(0, 1.07f, 0);
                     footPrints.tag = "Footprints";
                     if(changeFpTag)
                     {

@@ -1224,8 +1224,8 @@ Transform:
   m_GameObject: {fileID: 921997461}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.66, z: 9.18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 5.87, z: 8.61}
+  m_LocalScale: {x: 0.1, y: 1, z: 0.3223731}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 254188680}
@@ -1271,7 +1271,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 24df8078be783954b806d471eafe2e79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1300,7 +1300,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921997461}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &968949690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2239,6 +2239,9 @@ MonoBehaviour:
   normalScene: {fileID: 1848444772}
   glassesScene: {fileID: 1405954225}
   trees: []
+  footPrints: []
+  realFp: []
+  isFirst: 1
 --- !u!4 &1876197242
 Transform:
   m_ObjectHideFlags: 0
