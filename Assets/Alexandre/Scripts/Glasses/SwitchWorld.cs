@@ -6,14 +6,14 @@ public class SwitchWorld : MonoBehaviour
 {
     public GameObject normalScene;
     public GameObject glassesScene;
-    public List<GameObject> trees;
+    public GameObject[] trees;
 
     private bool normalBool = true;
     private bool glassesBool = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        trees = GameObject.FindGameObjectsWithTag("Tree");
     }
 
     // Update is called once per frame
