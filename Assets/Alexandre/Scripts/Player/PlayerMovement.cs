@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.tag == "WrongPath")
         {
             print("non");
-            rb.transform.position = new Vector3(-3, -2, 115);
+            rb.transform.position = new Vector3(-3, 0, 115);
             ways.GenerateRightPathway();
         }
     }
@@ -112,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(glasses);
             Destroy(glassesTrigger);
             switchWorld.canUse = true;
+            yes = false;
         }
     }
 }

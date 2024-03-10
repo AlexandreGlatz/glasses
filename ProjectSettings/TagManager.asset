@@ -11,6 +11,7 @@ TagManager:
   - Footprints
   - RealFootprints
   - HelpCube
+  - GoLvl3
   layers:
   - Default
   - TransparentFX
