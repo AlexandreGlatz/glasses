@@ -10,6 +10,8 @@ public class DoorController : MonoBehaviour
     private bool canOpen = false;
     public Animator anim;
 
+    public LoadingScreen loadingScreen;
+
     public void OpenClose()
     {
         
@@ -23,10 +25,16 @@ public class DoorController : MonoBehaviour
         isOpen = !isOpen;
 
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.tag == "Player")
+        {
             canOpen = true;
+            if(!lockedByPassword)
+            {
+                loadingScreen.LoadScene(1);
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)

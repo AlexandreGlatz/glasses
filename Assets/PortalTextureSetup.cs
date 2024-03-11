@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PortalTextureSetup : MonoBehaviour
+public class PortalTextureSetup2 : MonoBehaviour
 {
     public Camera cameraB;
     public Camera cameraA;

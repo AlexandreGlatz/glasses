@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class PortalCamera : MonoBehaviour
+public class PortalCamera2 : MonoBehaviour
 {
     public Transform playerCamera;
     public Transform portal;

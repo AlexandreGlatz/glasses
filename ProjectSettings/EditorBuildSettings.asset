@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MainScene/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Alexandre/Scenes/MenuPrincipal.unity
+    guid: 385df6663358cd74aaf79384889b4f25
   - enabled: 1
     path: Assets/Alexandre/Scenes/AlexScene.unity
     guid: b92b72052fa63664da7672d4beb4fc4a
+  - enabled: 1
+    path: Assets/Wael/Scenes/BlockingBureauDeWael.unity
+    guid: e7d802398d2c08d498dadc5a80b414ef
+  - enabled: 1
+    path: Assets/Erwan/Scenes/ErwanScene.unity
+    guid: ea23fd97ac5c16c4fb7afe201dd89e6a
+  - enabled: 1
+    path: Assets/Erwan/Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

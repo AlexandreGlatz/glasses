@@ -29,24 +29,30 @@ public class PlayerMovement : MonoBehaviour
     [Header("Tuto Texts")]
     public GameObject helpText;
     public GameObject useText;
+    public LoadingScreen loadingScreen;
 
     [Header("Glasses")]
     public GameObject glasses;
     public GameObject glassesTrigger;
-
+    static bool fT = true;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        if(!fT)
+        {
+            rb.transform.position = new Vector3(-3, 0, 115);
+        }
+        fT = false;
     }
 
     private void Update()
     {
         MyInput();
         SpeedControl();
-
+        
         rb.drag = groundDrag;
         if (yes)
         {
@@ -57,7 +63,8 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
-    }
+        
+}
 
     // Update is called once per frame
     private void MyInput()
@@ -101,6 +108,16 @@ public class PlayerMovement : MonoBehaviour
             helpText.SetActive(true);
             yes = true;
         }
+
+        if (other.tag == "GoLvl1")
+        {
+            loadingScreen.LoadScene(2);
+        }
+        if (other.tag == "GoLvl3")
+        {
+            loadingScreen.LoadScene(3);
+        }
+
     }
 
     void GetGlasses()

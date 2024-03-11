@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PathWays : MonoBehaviour
@@ -34,6 +33,7 @@ public class PathWays : MonoBehaviour
     public GameObject footPrints;
     bool changeFpTag = false;
 
+    
     bool firstGen = true;
     // Start is called before the first frame update
     void Start()
